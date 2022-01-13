@@ -1,0 +1,53 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "boxProvider",
+	"vendor": "box",
+	"category": "storage",
+	"title": "Box API Provider",
+	"desc": "Box API Provider",
+	"icon": "svg:box",
+	"refs": {
+		"credentials": {
+			"type": "credential",
+			"filters": {
+				"vendor": "box"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"credential": {
+			"index": 1,
+			"title": "Credential",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "option.id",
+						"title": "option.username + '@box'"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the service"
+		},
+		"root": {
+			"index": 2,
+			"title": "Root path",
+			"type": "string",
+			"required": true,
+			"desc": "Root document ID"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: lookup('credentials', fields.credential).username + '@box'"}
+	}
+}

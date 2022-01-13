@@ -1,0 +1,55 @@
+.resize-handle-bottom, .resize-handle-top,
+.resize-handle-left, .resize-handle-right {
+	opacity: 0;
+	transition: opacity .15s ease;
+	position: absolute;
+	z-index: 1050;
+}
+
+.resize-handle-bottom:hover, .resize-handle-top:hover,
+.resize-handle-left:hover, .resize-handle-right:hover {
+	opacity: 1;
+}
+
+.resize-handle-bottom, .resize-handle-top {
+	left: 0;
+	right: 0;
+	height: 12px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAADCAYAAAB4bZQtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAAG0lEQVQoU2NYsu/KfwYgoBVNO0CsC0inr/wHAObOTPmNNty8AAAAAElFTkSuQmCC") no-repeat center center;
+	background-color: #ddd;
+	cursor: row-resize;
+}
+
+.resize-handle-left, .resize-handle-right {
+	top: 0;
+	bottom: 0;
+	width: 12px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAXAQMAAAD0oWdxAAAABlBMVEUAAACkvtSA7tmIAAAAAXRSTlMAQObYZgAAAA5JREFUeF5jWMDAQDwGAKyuB4FpGQdzAAAAAElFTkSuQmCC") no-repeat center center;
+	background-color: #ddd;
+	cursor: col-resize;
+}
+
+.resize-handle-bottom {
+	top: 0;
+}
+
+.resize-handle-top {
+	bottom: 0;
+}
+
+.resize-handle-right {
+	left: 0;
+}
+
+.resize-handle-left {
+	right: 0;
+}
+
+.resize-handle-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 1.5rem;
+	color: #048378;
+	cursor: pointer;
+}

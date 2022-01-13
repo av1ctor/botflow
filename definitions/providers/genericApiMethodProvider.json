@@ -1,0 +1,295 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "genericApiMethodProvider",
+	"vendor": "internal",
+	"category": "api",
+	"title": "Generic API Method Provider",
+	"desc": "Generic API method provider",
+	"icon": "running",
+	"refs": {
+		"apis": {
+			"type": "provider",
+			"filters": {
+				"name": "genericApiProvider"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "API method name",
+			"required": true
+		},
+		"desc": {
+			"index": 1,
+			"title": "Description",
+			"type": "string",
+			"desc": "API method description"
+		},
+		"provider": {
+			"index": 2,
+			"title": "API provider",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "apis.fields",
+					"option": {
+						"value": "id",
+						"title": "name"
+					}
+				}
+			},
+			"desc": "API provider to use when calling the method"
+		},
+		"httpMethod": {
+			"index": 3,
+			"title": "HTTP method",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"options": [
+					{"title": "GET", "value": "GET"},
+					{"title": "PUT", "value": "PUT"},
+					{"title": "POST", "value": "POST"},
+					{"title": "PATCH", "value": "PATCH"},
+					{"title": "DELETE", "value": "DELETE"}
+				]
+			},
+			"desc": "HTTP method type"
+		},
+		"url": {
+			"index": 4,
+			"title": "URL",
+			"type": "string",
+			"required": true,
+			"desc": "Absolute or relative URL of the method to call"
+		},
+		"reqContentType": {
+			"index": 5,
+			"title": "Request content type",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"options": [
+					{"title": "FORM_DATA", "value": "FORM_DATA"},
+					{"title": "JSON", "value": "JSON"},
+					{"title": "XML", "value": "XML"}
+				]
+			},
+			"desc": "Type of the content sent in the request"
+		},
+		"reqFields": {
+			"index": 6,
+			"title": "Parameters",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Request parameters"
+		},
+		"headerFields": {
+			"index": 7,
+			"title": "Header fields",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{"type": "text", "title": "Text"},
+						{"type": "script", "title": "Script"},
+						{"type": "function", "title": "Function"}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Request header fields"
+		},
+		"bodyFields": {
+			"index": 8,
+			"title": "Body fields",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{"type": "text", "title": "Text"},
+						{"type": "script", "title": "Script"},
+						{"type": "function", "title": "Function"}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Request body fields"
+		},
+		"preReqVars": {
+			"index": 9,
+			"title": "Pre-request variables",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{"type": "text", "title": "Text"},
+						{"type": "script", "title": "Script"},
+						{"type": "function", "title": "Function"}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Pre request variables"
+		},
+		"postReqVars": {
+			"index": 10,
+			"title": "Post-request variables",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{"type": "text", "title": "Text"},
+						{"type": "script", "title": "Script"},
+						{"type": "function", "title": "Function"}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Post request variables"
+		},
+		"respFields": {
+			"index": 11,
+			"title": "Response fields",
+			"type": "object",
+			"multiple": true,
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Path",
+					"type": "string",
+					"required": true
+				}, 
+				"title": {
+					"index": 1,
+					"width": 4,
+					"title": "Title",
+					"type": "string",
+					"required": true
+				}, 
+				"multiple": {
+					"index": 2,
+					"width": 2,
+					"title": "Multiple?",
+					"type": "bool"
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Respose fields to be extracted"
+		},
+		"respContentType": {
+			"index": 12,
+			"title": "Response content type",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"options": [
+					{"title": "JSON", "value": "JSON"},
+					{"title": "XML", "value": "XML"}
+				]
+			},
+			"desc": "Response content type"
+		},
+		"respIsArray": {
+			"index": 13,
+			"title": "Is array?",
+			"type": "bool",
+			"desc": "Is response an array?"
+		},
+		"respNodePath": {
+			"index": 14,
+			"title": "Node path",
+			"type": "string",
+			"desc": "Node path into response"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name"}
+	}
+}

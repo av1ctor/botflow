@@ -1,0 +1,20 @@
+package com.robotikflow.core.models.queue;
+
+public enum CollectionUpdatedEvent 
+{
+    PROPS_UPDATED,
+    SCHEMA_UPDATED,
+    COLUMN_CREATED,
+    COLUMNS_CREATED,
+    COLUMN_DELETED,
+    COLUMNS_DELETED,
+    ITEM_CREATED,
+    ITEMS_CREATED,
+    ITEM_UPDATED,
+    ITEMS_UPDATED,
+    ITEM_DELETED,
+    ITEMS_DELETED,
+    CELL_UPDATED,
+    CELLS_UPDATED,
+    COLUMN_RENAMED,
+}

@@ -1,0 +1,179 @@
+.rf-logtree-container {
+	background-color: #fff;
+}
+
+.rf-logtree-cond {
+	padding: 8px;
+	margin: 2px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	position: relative;
+}
+
+.rf-logtree-val, 
+.rf-logtree-val-single {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-left: 4px;
+	padding: 4px;
+	position: relative;
+}
+
+.rf-logtree-cond:not(.top)::before,
+.rf-logtree-val::before {
+    position: absolute;
+    top: -12px;
+    height: calc(50% + 12px);
+    border-color: #CCC;
+    border-style: solid;
+	border-width: 0 0 2px 2px;
+    box-sizing: border-box;	
+    content: '';
+}
+
+.rf-logtree-val::before {
+    left: -8px;
+    width: 8px;
+}
+
+.rf-logtree-cond:not(.top)::before {
+    left: -6px;
+    width: 6px;
+}
+
+.rf-logtree-cond:not(.last)::after,
+.rf-logtree-val:not(.last)::after {
+    position: absolute;
+    top: 50%;
+    height: calc(50% + 8px);
+    border-color: #CCC;
+    border-style: solid;
+	border-width: 0 0 0 2px;
+    box-sizing: border-box;	
+    content: '';
+}
+
+.rf-logtree-cond:not(.last)::after {
+    left: -6px;
+    width: 6px;
+}
+
+.rf-logtree-val:not(.last)::after {
+    left: -8px;
+    width: 8px;
+}
+
+.rf-logtree-cond:hover {
+	border-color: #888;
+}
+
+.rf-logtree-val:hover {
+	border-color: #444;
+}
+
+.rf-logtree-val-actions {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 4px;
+}
+
+.rf-logtree-cond:not(.first),
+.rf-logtree-val:not(.first) {
+	margin-top: 8px;
+}
+
+.rf-logtree-val-preview {
+	cursor: pointer;
+}
+
+.rf-logtree-op-header {
+	margin-left: -3px;
+	height: 2.5rem;
+	width: 100%;
+	position: relative;
+}
+
+.rf-logtree-op-header-opers {
+	float: left;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	padding: 4px;
+}
+
+.rf-logtree-op-header-actions {
+	float: right;
+	margin-right: 2px;
+}
+
+.rf-logtree-op-log-button {
+	float: left;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0px 4px 0px 4px;
+	margin-right: 4px;
+}
+
+.rf-logtree-op-header-actions-button {
+	float: left;
+	position: relative;
+}
+
+.rf-logtree-op-header-actions-button {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0px 6px 0px 6px;
+}
+
+.rf-logtree-op-header-actions-button:not(:last-child) {
+	margin-right: 4px;
+}
+
+.rf-logtree-op-log-button:hover,
+.rf-logtree-op-header-actions-button:hover {
+	cursor: pointer;
+	border-color: #000;
+	animation: icon-scale 0.3s ease-in-out;
+}
+
+.rf-logtree-op-log-button.active {
+	border: 1px solid green;
+	color: green;
+}
+
+.rf-logtree-op-log-button.not.active {
+	border-color: red;
+	color: red;
+}
+
+.rf-logtree-handle {
+	align-self: center; 
+	cursor: grab;
+	float: left;
+}
+
+.rf-logtree-handle-badge {
+	margin-right: 4px;
+}
+
+.rf-logtree-handle.disabled,
+.rf-logtree-op-log-button.disabled,
+.rf-logtree-op-header-actions-button.disabled {
+	border-color: #ddd;
+	color: #ddd;
+}
+
+.rf-logtree-op-plus {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: smaller;
+	color: #048378;
+}
+
+.rf-logtree-buttons {
+	width: 100%;
+	margin-top: 8px;
+	text-align: center;
+}

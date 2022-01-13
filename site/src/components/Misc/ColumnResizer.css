@@ -1,0 +1,26 @@
+.rf-column-resizer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+    width: 12px;
+    height: 100%;
+	cursor: col-resize;
+	background-color: #ddd;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAXAQMAAAD0oWdxAAAABlBMVEUAAACkvtSA7tmIAAAAAXRSTlMAQObYZgAAAA5JREFUeF5jWMDAQDwGAKyuB4FpGQdzAAAAAElFTkSuQmCC") no-repeat center center;
+	opacity: 0;
+	transition: opacity .15s ease;
+	z-index: 1040;
+}
+
+.rf-column-resizer:hover {
+	opacity: 1;
+}
+
+.rf-column-helper {
+    background-color: #007ad9;
+    width: 1px;
+    position: absolute;
+    z-index: 1040;
+}

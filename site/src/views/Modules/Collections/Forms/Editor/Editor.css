@@ -1,0 +1,215 @@
+.rf-formeditor-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.rf-formeditor-options {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 20%;
+    min-height: 100px;
+}
+
+.rf-formeditor-step-elements {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 80%;
+    display: none;
+}
+
+.rf-formeditor-step-elements.active {
+    display: block;
+}
+
+.rf-formeditor-element {
+    position: relative;
+    min-height: 1rem;
+    height: 100%;
+    width: 100%;
+}
+
+.rf-formeditor-element-wrapper {
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+.rf-formeditor-element-wrapper.selected {
+    border: 1px dashed hsl(112, 30%, 55%);
+}
+
+.rf-formeditor-row:hover > .row > div:not(.last) .rf-formeditor-element::after {
+    content: "";
+    border-right: dashed 1px #ccc;
+    position: absolute;
+    right: -1rem;
+    top: 0;
+    height: 100%;
+}
+
+.rf-formeditor-element-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    transition: opacity 250ms ease-in;
+}
+
+.rf-formeditor-element:hover > .rf-formeditor-element-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-formeditor-controls-button {
+    color: rgb(4, 131, 120);
+    border-radius: 4px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.rf-formeditor-controls-button.grab {
+    cursor: grab;
+}
+
+.rf-formeditor-controls-button:hover {
+    background-color: #ccc;
+}
+
+.rf-formeditor-row {
+    border: dashed 1px #eee;
+    padding: 4px;
+    margin-bottom: 4px;
+    min-height: 1rem;
+}
+
+.rf-formeditor-row:hover {
+    border: dashed 1px #ccc;
+}
+
+.rf-formeditor-row-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: calc(50% - 2rem);
+    bottom: -1rem;
+    width: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 1.75rem;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px #888;
+    display: flex;
+    cursor: pointer;
+    transition: opacity 500ms ease-in;
+    z-index: 10001;
+}
+
+.rf-formeditor-element:hover .rf-formeditor-row-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-formeditor-col-split {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: calc(50% - 0.5rem);
+    top: 0;
+    bottom: 0;
+    background-color: rgba(4, 131, 120, .1);
+    width: 1rem;
+    cursor: pointer;
+    transition: opacity 1000ms ease-in;
+}
+
+.rf-formeditor-col-split::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 1rem;
+    bottom: 1rem;
+    border-left: 1px dashed red;
+}
+
+.rf-formeditor-element:hover > .rf-formeditor-col-split {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.rf-formeditor-empty  {
+    min-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.rf-formeditor-empty > div {
+    color: #ddd;
+}
+
+.rf-formeditor-sortable {
+    z-index: 10000;
+}
+
+.rf-formeditor-inspector {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 350px;
+    border-left: 1px solid #ccc;
+    box-shadow: 2px 2px 8px #888;
+    background-color: #fff;
+    color: black;
+    padding: 8px;
+}
+
+.rf-formeditor-inspector.visible {
+    display: block;
+}
+
+.rf-formeditor-inspector-close {
+    position: absolute;    
+    top: 0;
+    right: 0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.rf-formeditor-step-controls {
+    display: flex;
+    width: fit-content;
+    justify-content: space-around;
+    margin: 1.5rem auto 0 auto;
+}
+
+.rf-formeditor-step-button {
+    flex: 0 0 4rem;
+    position: relative;
+    text-align: center;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.rf-formeditor-step-button.active {
+    font-weight: bold;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.rf-formeditor-step-button .rf-menu-handle {
+    top: -2px;
+    right: 2px;
+}
+

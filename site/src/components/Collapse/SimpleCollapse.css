@@ -1,0 +1,10 @@
+.rf-collapse-container {
+	padding: 8px 4px 8px 4px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.rf-collapse-header {
+	cursor: pointer;
+}
+

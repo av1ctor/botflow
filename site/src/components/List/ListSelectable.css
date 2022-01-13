@@ -1,0 +1,122 @@
+.rf-listbox-container {
+	border: 1px solid rgb(223, 223, 223);
+	border-radius: 0.25em;
+	background-color: #fff;
+}
+
+.rf-listbox-list {
+	padding: 0px 4px 0px 4px;
+}
+
+.rf-listbox-header,
+.rf-listbox-item {
+	color: #000;
+    background-color: transparent;
+	transition: background-color 0.2s;
+}
+
+.rf-listbox-item {
+	border-top: 1px solid #eee;
+}
+
+.rf-listbox-item.pointer {
+	cursor: pointer;
+}
+
+.rf-listbox-header {
+	font-weight: bold;
+}
+
+.rf-listbox-item.selected {
+    background-color: #bac5ce;
+}
+
+.rf-listbox-item.colapsed {
+	padding: 0 4px 0 4px;
+}
+
+.rf-listbox-item.expanded {
+	padding: 0 4px 20px 4px;
+	background-color: #fafafa;
+}
+
+.rf-listbox-item-preview {
+	cursor: pointer;
+	border-top: 1px solid rgb(197, 197, 197);
+}
+
+.rf-listbox-item-preview:hover {
+	background-color: #ddf;
+}
+
+.rf-listbox-item-preview > div,
+.rf-listbox-header > div,
+.rf-listbox-item > div {
+	white-space: nowrap;
+	text-overflow: clip;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.rf-listbox-item-preview > div,
+.rf-listbox-header > div
+{
+	overflow-x: hidden;
+}
+
+
+.rf-listbox-item-preview > div:not(.no-border),
+.rf-listbox-header > div:not(.no-border),
+.rf-listbox-item > div:not(.no-border) {
+	border-left: 1px solid #bbb !important;
+}
+
+.rf-listbox-empty {
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.rf-listbox-num {
+	width: calc(1.5rem + 10px) !important;
+}
+
+.rf-listbox-buttons {
+	flex: 0 0 auto !important;
+	white-space: nowrap !important;
+	margin-right: 4px;
+	margin-left: auto;
+}
+
+.rf-listbox-button {
+	border: 0 !important;
+	padding: 0 2px 0 2px !important;
+	margin: 0 !important;
+}
+
+.rf-listbox-button-icon {
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #048378;
+}
+
+.rf-listbox-button-bar {
+	text-align: center;
+}
+
+.base-list-button {
+	display: inline-block;
+	color: #048378 !important;
+}
+
+.base-list-button:hover {
+	color: #fff !important;
+}
+
+.drag-handle {
+	height: 20px;
+	width: 12px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAXAQMAAAD0oWdxAAAABlBMVEUAAACkvtSA7tmIAAAAAXRSTlMAQObYZgAAAA5JREFUeF5jWMDAQDwGAKyuB4FpGQdzAAAAAElFTkSuQmCC") repeat-x center center;
+	cursor: grab;
+	margin-right: 4px;
+}

@@ -1,0 +1,46 @@
+.scrollbars-track-vertical {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    border-radius: 3px;
+    transition: width 150ms ease-in-out;
+    z-index: 10;
+}
+
+.scrollbars-track-vertical:hover {
+    width: 12px !important;
+}
+
+.scrollbars-track-vertical .scrollbars-thumb-vertical,
+.scrollbars-track-horizontal .scrollbars-thumb-horizontal {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: rgba(125, 149, 255, 0.993);
+}
+
+.scrollbars-track-vertical .scrollbars-thumb-vertical {
+    width: 100%;
+}
+
+.scrollbars-track-horizontal {
+    position: absolute;
+    height: 6px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    border-radius: 3px;
+    transition: height 150ms ease-in-out;
+    z-index: 10;
+}
+
+.scrollbars-track-horizontal:hover {
+    height: 12px !important;
+}
+
+.scrollbars-track-horizontal .scrollbars-thumb-horizontal {
+    height: 100%;
+ }
+  

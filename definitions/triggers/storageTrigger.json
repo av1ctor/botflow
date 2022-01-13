@@ -1,0 +1,118 @@
+{
+	"version": 1.0,
+	"type": "trigger",
+	"name": "storageTrigger",
+	"category": "storage",
+	"title": "Storage monitor",
+	"desc": "Monitors a storage provider",
+	"icon": "file",
+	"refs": {
+		"providers": {
+			"type": "provider",
+			"filters": {
+				"category": "storage"
+			}
+		}
+	},
+	"fields": {
+		"provider": {
+			"index": 0,
+			"title": "Provider",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "providers.fields",
+					"option": {
+						"value": "id",
+						"title": "title"
+					}
+				}
+			},
+			"desc": "Storage provider to monitor"
+		},
+		"path": {
+			"index": 1,
+			"title": "Path",
+			"type": "string",
+			"required": true,
+			"desc": "Path that will be monitored"
+		},
+		"op": {
+			"index": 2,
+			"title": "Operation",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"options": [
+					{"value": "CREATED", "title": "File created"},
+					{"value": "UPDATED", "title": "File updated"},
+					{"value": "MOVED", "title": "File moved"},
+					{"value": "RENAMED", "title": "File renamed"},
+					{"value": "REMOVED", "title": "File deleted"}
+				]
+			},
+			"desc": "Operation that will be monitored"
+		}
+	},
+	"operations": {
+		"sync": {
+			"out": {
+				"multiple": true,
+				"fields": {
+					"name": {
+						"type": "string",
+						"title": "Name"
+					},
+					"id": {
+						"type": "string",
+						"title": "Id",
+						"hidden": true
+					},
+					"path": {
+						"type": "string",
+						"title": "Path"
+					},
+					"extension": {
+						"type": "string",
+						"title": "Extension",
+						"hidden": true
+					},
+					"mimeType": {
+						"type": "string",
+						"title": "Mime type",
+						"hidden": true
+					},
+					"size": {
+						"type": "number",
+						"title": "Size"
+					},
+					"createdAt": {
+						"type": "datetime",
+						"title": "Created at"
+					},
+					"modifiedAt": {
+						"type": "datetime",
+						"title": "Modified at"
+					},
+					"creator": {
+						"type": "string",
+						"title": "Creator"
+					},
+					"url": {
+						"type": "string",
+						"title": "URL",
+						"hidden": true
+					},
+					"files": {
+						"type": "array",
+						"title": "Files",
+						"hidden": true
+					}
+				}
+			}
+		}
+	}
+}

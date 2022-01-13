@@ -1,0 +1,46 @@
+.tabspanel-grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.tabspanel-grid-col {
+    flex: 0 1;
+    min-width: 20%;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem;
+    border: 1px solid rgb(185, 183, 183);
+    transition: transform .2s ease-in;
+}
+
+.tabspanel-grid-col:hover {
+    transform: scale(1.1);
+}
+
+.tabspanel-grid-col i {
+    color: #048378;
+}
+
+.tab-pane.rf-col-props-container.active {
+    animation: zero-to-one-opacity 75ms ease-in;
+}
+
+@keyframes zero-to-one-opacity
+{
+    from{opacity: 0;};
+    to{opacity: 1;};
+}
+
+.tab-pane-modal {
+	width: 50vw;
+	height: 75vh;
+}
+
+@media only screen and (min-width: 1024px) {
+	.tab-pane-modal {
+		min-width: 800px;
+		min-height: 600px;
+	}
+}
+

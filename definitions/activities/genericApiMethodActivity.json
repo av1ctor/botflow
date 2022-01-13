@@ -1,0 +1,74 @@
+{
+	"version": 1.0,
+	"type": "trigger",
+	"name": "genericApiMethodActivity",
+	"category": "api",
+	"title": "Generic API method activity",
+	"desc": "Invokes an generic API method",
+	"icon": "api",
+	"refs": {
+		"providers": {
+			"type": "providers",
+			"filters": {
+				"category": "genericApiMethodProvider"
+			}
+		}
+	}
+	"fields": {
+		"provider": {
+			"index": 0,
+			"title": "Provider",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "providers.fields",
+					"option": {
+						"value": "id",
+						"title": "name"
+					}
+				}
+			},
+			"desc": "API method provider to invoke"
+		},
+		"params": {
+			"index": 1,
+			"title": "Parameters",
+			"type": "object",
+			"required": true,
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Name",
+					"type": "string",
+					"required": true
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Request parameters"
+		}
+	},
+	"operations":
+	{
+		"run": {
+			"out": {
+				"multiple": true,
+				"fields": null
+			},
+			"methods": {
+				"getOutFields": {"script": "ref('providers', fields.provider).fields.respFields"}
+			}
+		}
+	}
+}

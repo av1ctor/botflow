@@ -1,0 +1,52 @@
+.rf-iconpckr-container {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 4px;
+}
+
+.rf-iconpckr-cell {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.15s ease-in-out, background-color 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.rf-iconpckr-cell.selected {
+    background-color: #ddf;
+    font-weight: bold;
+}
+
+.rf-iconpckr-cell:not(.last) {
+    border-right: 0;
+}
+
+.rf-iconpckr-cell:not(.selected):hover {
+    border-right: 1px solid #ced4da;
+    border-width: 2px;
+    transform: scale(1.1, 1.1);
+    background-color: #ddf;
+    z-index: 10;
+}
+
+.rf-iconpckr-icon,
+.rf-iconpckr-avatar {
+    margin: 0;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%);    
+    font-size: 2rem;
+}
+
+.selected .rf-iconpckr-icon,
+.selected .rf-iconpckr-avatar {
+    font-size: 2.22rem;
+}
+
+.rf-iconpckr-name {
+    font-size: 0.75rem;
+}

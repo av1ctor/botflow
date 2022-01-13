@@ -1,0 +1,215 @@
+.rf-bareditor-top,
+.rf-bareditor-bottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.rf-bareditor-left,
+.rf-bareditor-right {
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.rf-bareditor-bar {
+    display: flex;
+    border: 1px solid #888;
+    margin: auto;
+}
+
+.rf-bareditor-bar.horz {
+    min-height: 1rem;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+}
+
+.rf-bareditor-bar.vert {
+    min-width: 1rem;
+    width: fit-content;
+    height: 100%;
+    flex-direction: column;
+}
+
+.rf-bareditor-options {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 20%;
+    min-height: 100px;
+}
+
+.rf-bareditor-block::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2rem;
+    display: block;
+    height: 2rem;
+}
+
+.rf-bareditor-block:hover:not(.last) .rf-bareditor-element::after {
+    content: "";
+    border-right: dashed 1px #ccc;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+.rf-bareditor-block:hover:not(.first) .rf-bareditor-element::before {
+    content: "";
+    border-right: dashed 1px #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+.rf-bareditor-controls-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: #aaa;
+    white-space: nowrap;
+}
+
+.rf-bareditor-element {
+    flex: 0 0 auto;
+    height: 100%;
+    min-height: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    
+.rf-bareditor-element-wrapper {
+    margin: auto;
+    width: 100%;
+    border: dashed 1px #eee;
+    position: relative;
+}
+
+.rf-bareditor-element-wrapper:hover {
+    border: dashed 1px #ccc;
+}
+
+.rf-bareditor-element-wrapper.selected {
+    border: 1px dashed hsl(112, 30%, 55%);
+}
+
+.rf-bareditor-element-controls,
+.rf-bareditor-block-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 1px 1px 6px #888;
+    border-radius: 8px;
+    transition: opacity 250ms ease-in;
+    z-index: 10001;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rf-bareditor-element-controls {
+    top: -1.5rem;
+}
+
+.rf-bareditor-block-controls {
+    bottom: -2.5rem;
+}
+
+.rf-bareditor-element-wrapper:hover .rf-bareditor-element-controls,
+.rf-bareditor-block:hover .rf-bareditor-block-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-bareditor-element-controls:hover,
+.rf-bareditor-block-controls:hover {
+    background-color: #fff;
+}
+
+.rf-bareditor-controls-button {
+    color: rgb(4, 131, 120);
+    border-radius: 4px;
+    margin: 8px 4px 0 4px;
+    cursor: pointer;
+}
+
+.rf-bareditor-controls-button.grab {
+    cursor: grab;
+}
+
+.rf-bareditor-controls-button:hover {
+    background-color: #ccc;
+}
+
+.rf-bareditor-element:hover .rf-bareditor-block-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-bareditor-empty  {
+    min-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.rf-bareditor-empty > div {
+    color: #ddd;
+}
+
+.rf-bareditor-sortable {
+    z-index: 10000;
+}
+
+.rf-bareditor-inspector {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 350px;
+    border-left: 1px solid #ccc;
+    box-shadow: 2px 2px 8px #888;
+    background-color: #fff;
+    color: black;
+    padding: 8px;
+}
+
+.rf-bareditor-inspector.visible {
+    display: block;
+}
+
+@media only screen and (max-width: 1023px) {
+	.rf-bareditor-inspector {
+		width: 100vw;
+	}
+}
+
+.rf-bareditor-inspector-title {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.rf-bareditor-inspector-close {
+    position: absolute;    
+    top: 0;
+    right: 0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}

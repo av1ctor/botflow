@@ -1,0 +1,191 @@
+.rf-screeneditor-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.rf-screeneditor-options {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 20%;
+    min-height: 100px;
+}
+
+.rf-screeneditor-element {
+    position: relative;
+    min-height: 1rem;
+    width: 100%;
+    overflow: visible;
+}
+
+.rf-screeneditor-element-wrapper {
+    height: 100%;
+    width: 100%;
+    min-height: 1rem;
+    border: 1px solid transparent;
+}
+
+.rf-screeneditor-element-wrapper.selected {
+    border: 1px dashed hsl(112, 30%, 55%);
+}
+
+.rf-screeneditor-block:hover > .row > div:not(.last) .rf-screeneditor-element::after {
+    content: "";
+    border-right: dashed 1px #ccc;
+    position: absolute;
+    right: -1rem;
+    top: 0;
+    height: 100%;
+}
+
+.rf-screeneditor-element-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    transition: opacity 250ms ease-in;
+}
+
+.rf-screeneditor-element:hover > .rf-screeneditor-element-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-screeneditor-controls-button {
+    color: rgb(4, 131, 120);
+    border-radius: 4px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.rf-screeneditor-controls-button.grab {
+    cursor: grab;
+}
+
+.rf-screeneditor-controls-button:hover {
+    background-color: #ccc;
+}
+
+.rf-screeneditor-block {
+    border: dashed 1px #eee;
+    padding: 4px;
+    margin-bottom: 4px;
+    min-height: 1rem;
+}
+
+.rf-screeneditor-block:hover {
+    border: dashed 1px #ccc;
+}
+
+.rf-screeneditor-block-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: calc(50% - 2rem);
+    bottom: -1rem;
+    width: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 1.75rem;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px #888;
+    display: flex;
+    cursor: pointer;
+    transition: opacity 500ms ease-in;
+    z-index: 10001;
+}
+
+.rf-screeneditor-element:hover .rf-screeneditor-block-controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rf-screeneditor-col-split {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: calc(50% - 0.5rem);
+    top: 0;
+    bottom: 0;
+    background-color: rgba(4, 131, 120, .1);
+    width: 1rem;
+    cursor: pointer;
+    transition: opacity 1000ms ease-in;
+}
+
+.rf-screeneditor-col-split::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 1rem;
+    bottom: 1rem;
+    border-left: 1px dashed red;
+}
+
+.rf-screeneditor-element:hover > .rf-screeneditor-col-split {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.rf-screeneditor-empty  {
+    min-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.rf-screeneditor-empty > div {
+    color: #ddd;
+}
+
+.rf-screeneditor-sortable {
+    z-index: 10000;
+}
+
+.rf-screeneditor-inspector {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 350px;
+    border-left: 1px solid #ccc;
+    box-shadow: 2px 2px 8px #888;
+    background-color: #fff;
+    color: black;
+    padding: 8px;
+}
+
+.rf-screeneditor-inspector.visible {
+    display: block;
+}
+
+@media only screen and (max-width: 1023px) {
+	.rf-screeneditor-inspector {
+		width: 100vw;
+	}
+}
+
+.rf-screeneditor-inspector-title {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.rf-screeneditor-inspector-close {
+    position: absolute;    
+    top: 0;
+    right: 0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.rf-screeneditor-form-empty {
+    color: #ddd;
+}

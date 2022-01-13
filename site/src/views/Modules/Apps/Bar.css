@@ -1,0 +1,60 @@
+.rf-app-bar.horz {
+    width: 100%;
+    height: fit-content;
+    min-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    padding: 2px;
+    margin: 0;
+}
+
+.rf-app-bar.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #888;
+}
+
+.rf-app-bar.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #888;
+}
+
+.rf-bar-block {
+    position: relative;
+    min-height: 1rem;
+    width: 100%;
+    overflow: visible;
+    padding: 0 !important;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.rf-bar-block.horz {
+    flex-direction: row;
+}
+
+.rf-bar-block.vert {
+    flex-direction: column;
+}
+
+.rf-bar-empty {
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.rf-bar-menu {
+    padding: 0 0.5rem;
+    height: 100%;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.rf-bar-button {
+    margin-left: 2px;
+}

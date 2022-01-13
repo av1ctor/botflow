@@ -1,0 +1,12 @@
+package com.robotikflow.core.models.entities;
+
+public enum RoleType 
+{
+	ROLE_USER_PARTNER,
+	ROLE_USER_CONTRIBUTOR,
+	ROLE_USER_ADMIN,
+	ROLE_ADMIN_EMPLOYEE,
+	ROLE_ADMIN_SUPERVISOR,
+	ROLE_ADMIN_DIRECTOR,
+	ROLE_ADMIN_MASTER
+}

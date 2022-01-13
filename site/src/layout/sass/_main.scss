@@ -1,0 +1,417 @@
+body {
+	background: url("/assets/layout/images/what-the-hex.png") repeat $bodyBgColor;
+}
+
+.layout-sidebar-opener {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    border: 2px solid red;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 50;
+    color: red;
+    cursor: pointer;
+    opacity: 0.5;
+    box-shadow: 4px 4px 8px #888;
+}
+
+.layout-sidebar-opener.hidden {
+    display: none;
+}
+  
+.layout-sidebar-opener:hover {
+    background-color: #fff;
+    opacity: 1;
+}
+
+.layout-wrapper {
+    padding: 0;
+
+    .p-scrollpanel {
+        background: transparent;
+        border-radius: 0;
+        border: none;
+
+        .p-scrollpanel-content {
+            overflow: scroll;
+        }
+
+        .p-scrollpanel-bar {
+            background: $scrollPanelBgColor;
+            @include opacity(0.3);
+        }
+
+        .p-scrollpanel-hidden {
+            display: block;
+            visibility: hidden;
+        }
+
+        .layout-sidebar-scroll-content {
+            width: calc(100% + 18px);
+            padding-bottom: 120px;
+        }
+    }
+
+    .layout-sidebar {
+        position: fixed;
+        width: $menuWidth;
+    	height: 100%;
+        z-index: 999;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        @include transition(left $transitionDuration);
+        @include linear-gradient($menuBgColorFirst, $menuBgColorLast);
+        @include shadow(0 0 6px 0 rgba(0, 0, 0, 0.16));
+
+        .layout-sidebar-toggle {
+            position: absolute;
+            right: 6px;
+            top: 0;
+            z-index: 1;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .layout-logo {
+            text-align: center;
+            margin-top: 24px;   
+        }
+
+        .profile {
+            text-align: center;
+            padding: 20px 0;
+
+            img {
+                width: 56px;
+                margin: 10px;
+            }
+
+            .profile-link {
+                cursor: pointer;
+                color: $menuitemColor;
+                display: inline-block;
+                margin-bottom: 10px;
+                @include transition(color $transitionDuration);
+
+                i {
+                    display: inline-block;
+                    font-size: 16px;
+                }
+
+                &:hover {
+                    color: $menuitemHoverColor;
+                }
+            }
+
+            > ul {
+                overflow: hidden;
+                background-color: $menuitemActiveBgColor;
+                text-align: left;
+                max-height: 0;
+                @include transition-duration($transitionDuration);
+                @include transition-timing-function(cubic-bezier(0.86, 0, 0.07, 1));
+
+                &.profile-expanded {
+                    max-height: 500px;
+                }
+
+                li {
+                    a {
+                        border: 0 none;
+                    }
+
+                    &:last-child {
+                        > a {
+                            border: 0 none;
+                        }
+                    }
+                }
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                a {
+                    cursor: pointer;
+                    position: relative;
+                    color: $menuitemColor;
+                    text-decoration: none;
+                    font-size: $fontSize;
+                    padding: 1em 15px 1em 1em;
+                    display: block;
+                    border-top: 1px solid $menuitemBorderColor;
+
+                    i {
+                        font-size: 18px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        margin-left: .25em;
+                        vertical-align: middle;
+                    }
+
+                    .menuitem-toggle-icon {
+                        float: right;
+                    }
+
+                    &:hover {
+                        color: $menuitemHoverColor;
+                    }
+                }
+
+                &.active-menuitem {
+                    > a {
+                        background-color: $menuitemActiveBgColor;
+                        color: $menuitemActiveColor;
+
+                        .menuitem-toggle-icon {
+                            @include icon-override("\f106");
+                        }
+                    }
+
+                    > ul {
+                        max-height: 500px;
+                    }
+                }
+
+                ul {
+                    background-color: $menuitemActiveBgColor;
+                    overflow: hidden;
+                    padding-left: 1.5em;
+                    max-height: 0;
+                    @include transition-property(max-height);
+                    @include transition-duration(0.4s);
+                    @include transition-timing-function(cubic-bezier(0.86, 0, 0.07, 1));
+
+                    li {
+                        a {
+                            cursor: pointer;
+                            padding: .75em 33px .75em .75em;
+                            font-size: $submenuFontSize;
+                            border-top: 0 none;
+                        }
+
+                        &:last-child {
+                            > a {
+                                border-bottom: 0 none;
+                            }
+                        }
+                    }
+                }
+
+                &:last-child {
+                    > a {
+                        border-bottom: 1px solid $menuitemBorderColor;
+                    }
+                }
+            }
+
+            .menuitem-toggle-icon {
+                font-size: 0.75rem;
+                float: right;
+                margin-top: 2px;
+            }
+
+            .menuitem-badge {
+                margin-top: 3px;
+                font-size: 10px;
+                float: right;
+                width: 16px;
+                height: 16px;
+                line-height: 16px;
+                text-align: center;
+                color: $menuitemBadgeColor;
+                background-color: $menuitemBadgeBgColor;
+                @include border-radius(50%);
+            }
+        }
+
+        &.layout-sidebar-dark {
+			@include linear-gradient($menuDarkBgColorFirst, $menuDarkBgColorLast);
+			
+			background: url("/assets/layout/images/what-the-hex-dark.png") repeat #000;
+
+            .layout-logo {
+                
+            }
+
+            .profile {
+                > a {
+                    color: $menuitemDarkColor;
+
+                    &:hover {
+                        color: $menuitemDarkHoverColor;
+                    }
+                }
+
+                > ul {
+                    background-color: rgba(255,255,255,0.05);
+
+                    li {
+                        a {
+                            border: 0 none;
+                        }
+                    }
+                }
+            }
+
+            ul {
+                li {
+                    a {
+                        color: $menuitemDarkColor;
+                        border-top: 1px solid $menuitemDarkBorderColor;
+
+                        &:hover {
+                            color: $menuitemDarkHoverColor;
+                        }
+                    }
+
+                    &.active-menuitem {
+                        > a {
+                            background-color: rgba(0,0,0,0.25);
+                            color: $menuitemDarkActiveColor;
+                        }
+                    }
+
+                    ul {
+                        background-color: rgba(255,255,255,0.05);
+
+                        li {
+                            a {
+                                border: none;
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        > a {
+                            border-bottom: 1px solid $menuitemDarkBorderColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .layout-main {
+        @include transition(margin-left $transitionDuration);
+        padding: 00px 0px 0px 4px;
+        overflow-x: hidden;
+    }
+
+    .layout-footer {
+        @include transition(margin-left $transitionDuration);
+        background-color: $footerBgColor;
+        padding: 1em 2em;
+
+        img {
+            vertical-align: middle;
+        }
+
+        .footer-text {
+            vertical-align: middle;
+        }
+    }
+}
+
+/* Responsive */
+@media (min-width: 1025px) {
+    .layout-wrapper {
+        &.layout-overlay {
+            .layout-sidebar {
+                left: -($menuWidth - $menuWidthClosed);
+            }
+            
+            .layout-main, .layout-footer {
+                margin-left: 0;
+            }
+    
+            &.layout-overlay-sidebar-active {
+                .layout-sidebar {
+                    left: 0;
+                }
+            }
+        }
+
+        &.layout-static {
+            .layout-sidebar {
+                left: 0;
+            }
+            .layout-main, .layout-footer {
+                margin-left: $menuWidth;
+            }
+    
+            &.layout-static-sidebar-inactive {
+                .layout-sidebar {
+                    left: -($menuWidth - $menuWidthClosed);
+                }
+
+                .layout-sidebar:hover {
+                    left: 0;
+                }
+                
+                .layout-main, .layout-footer {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .layout-wrapper {
+        .layout-main, .layout-footer {
+            margin-left: 0;
+            padding: 0;
+        }
+
+        .layout-sidebar {
+            left: -($menuWidth - $menuWidthClosed);
+            margin-top: 0;
+        }
+
+        .layout-mask {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 998;
+            background-color: $maskBgColor;
+            @include opacity(0.7);
+        }
+
+        &.layout-mobile-sidebar-active {
+            .layout-sidebar {
+                left: 0;
+            }
+
+            .layout-mask {
+                display: block;
+            }
+        }
+
+        &.layout-static-sidebar-inactive {
+            .layout-sidebar:hover {
+                left: 0;
+            }
+        }
+    }
+
+    .body-overflow-hidden {
+        overflow: hidden;
+    }
+}

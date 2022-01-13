@@ -1,0 +1,244 @@
+.base-list-container {
+	display: flex;
+	flex-flow: column nowrap;
+	min-height: 100%;
+	width: 100%;
+	max-width: 1400px;
+    align-self: center;
+    margin: auto;
+}
+
+.base-list-form {
+	flex: 0 1 auto;
+}
+
+.base-list-grid {
+	flex: 1 1 auto;
+	min-height: 100%;
+	position: relative;
+}
+
+.base-list-header {
+	font-weight: bold;
+	align-items: center;
+	cursor: pointer;
+}
+
+.base-list-header-col {
+	overflow: hidden !important;
+	white-space: nowrap;
+	text-overflow: clip; 
+	position: relative;
+	margin: auto;
+}
+
+ 
+.base-list-header-col-selected {
+	color: #55f;
+}
+
+.base-list-row {
+	flex-wrap: nowrap !important;
+	align-items: center;
+	margin: 4px 0px 0px 0px;
+	background-color: #fff;
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 8px;
+	padding: 14px 0 14px 0;
+}
+
+.base-list-row.expanded {
+	border-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.base-list-row.stripped:hover {
+	cursor: pointer;
+	background-color: #ddf !important;
+}
+
+.base-list-row-header {
+	background-color: transparent;
+	border: 0;
+}
+
+.base-list-row-add {
+	background-color: transparent;
+	border: 0;
+	margin: 0;
+	margin-left: -1rem;
+	padding: 0;
+}
+
+.base-list-row-content > div {
+	overflow: hidden !important;
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+	position: relative;
+	margin: auto;
+}
+
+.base-list-row-form {
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 8px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	background-color: #fafafa;
+	padding: 8px 24px 16px 24px;
+	margin: 0px 0px 0px 0px;
+}
+
+.base-list-row-form > div {
+	vertical-align: middle;
+}
+
+.base-list-row-col-others {
+	flex: 1 1 auto !important;
+	overflow-x: hidden;
+}
+
+.base-list-row-col-actions {
+	flex: 0 0 auto !important;
+	white-space: nowrap !important;
+	margin-right: 4px;
+	margin-left: auto;
+}
+
+.base-list-row-col-actions > button {
+	padding: 0px 2px 0px 2px;
+	margin: 2px 2px 2px 2px;
+	float: right;
+}
+
+.base-list-button-add-icon {
+	font-size: 1.5rem;
+}
+
+.base-list-button-add-title {
+	font-size: 1.2rem;
+	float: right;
+}
+
+.base-list-button-add-icon,
+.base-list-button-add-title {
+	font-weight: bold;
+	color: #048378;
+}
+
+@media only screen and (min-width: 1024px) {
+	.base-list-details-container .p-sidebar {
+		width: 50%;
+	}
+
+	.base-list-row-col-actions > button {
+		margin: 0 !important;
+	}
+}
+
+.base-list-button {
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+.base-form-label {
+	margin-top: 0.5rem;
+	margin-bottom: 0px !important;
+}
+
+.base-form-checkbox {
+    margin-top: 0.75rem !important;
+    margin-left: 0.5rem !important;
+    display: inline-block !important;
+}
+
+.base-form-prepend-icon {
+	height: 36px;
+    line-height: 36px;
+    width: 36px !important;
+    border-radius: 50%;
+    border: 1px solid #999;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+	margin-right: 4px;
+	font-size: 2.5rem;
+}
+
+.base-form-prepend-icon img {
+	position: relative;
+	top: -15%;
+}
+
+.base-form-prepend-icon i {
+	position: relative;
+	margin-top: 50%;
+	margin-left: 50%;
+	left: -57%;
+	top: -57%;
+}
+
+.base-form-prepend-icon > i:hover,
+.base-form-prepend-icon > img:hover {
+	animation: rf-list-icon-anim 0.3s ease-in-out;	
+}
+
+
+.base-list-filter-form {
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 8px;
+	background-color: #fafafa;
+	padding: 8px 24px 8px 24px;
+	margin-bottom: 1rem;
+}
+
+.base-list-filter-form-title {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.base-list-badge {
+	font-weight: normal !important;
+	font-size: 0.75rem;
+}
+
+.rf-drawer-container {
+	visibility: hidden;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	transition: left 250ms ease-in-out;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.rf-drawer-container.visible {
+	left: 0;
+}
+
+.rf-drawer-body {
+	width: 100%;
+	background-color: #fff;
+}
+
+.rf-drawer-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.rf-drawer-button-title {
+	font-weight: bold;
+	color: #048378;
+	font-size: 1.2rem;
+	float: right;
+}

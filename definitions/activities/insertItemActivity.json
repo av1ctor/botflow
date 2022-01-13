@@ -1,0 +1,72 @@
+{
+	"version": 1.0,
+	"type": "activity",
+	"name": "insertItemActivity",
+	"category": "collection",
+	"dir": "out",
+	"title": "Item insert",
+	"desc": "Insert a new item into the collection",
+	"icon": "table",
+	"fields": {
+		"fields": {
+			"index": 0,
+			"title": "Fields",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Field",
+					"type": "string",
+					"required": true,
+					"input": {
+						"type": "select",
+						"source": {
+							"name": "collection.fields",
+							"option": {
+								"title": "label",
+								"value": "id"
+							}
+						}
+					}
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{
+							"type": "text",
+							"title": "Value"
+						},
+						{
+							"type": "field", 
+							"title": "Field",
+							"source": {
+								"name": "in.fields",
+								"option": {
+									"title": "title",
+									"value": "key"
+								}
+							}
+						},
+						{
+							"type": "function",
+							"title": "Function"
+						},
+						{
+							"type": "script",
+							"title": "Script"
+						}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Fields to insert"
+		}
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"version": 1.0,
+	"type": "activity",
+	"name": "updateCurrentItemActivity",
+	"category": "collection",
+	"dir": "out",
+	"title": "Update current item",
+	"desc": "Update the current item in the collection",
+	"icon": "pen",
+	"fields": {
+		"fields": {
+			"index": 0,
+			"title": "Fields",
+			"type": "object",
+			"fields": {
+				"key": {
+					"index": 0,
+					"width": 4,
+					"title": "Field",
+					"type": "string",
+					"required": true,
+					"input": {
+						"type": "select",
+						"source": {
+							"name": "collection.fields",
+							"option": {
+								"title": "label",
+								"value": "id"
+							}
+						}
+					}
+				}, 
+				"value": {
+					"index": 1,
+					"width": 6,
+					"title": "Value",
+					"type": "string",
+					"required": true,
+					"inputs": [
+						{
+							"type": "text",
+							"title": "Value"
+						},
+						{
+							"type": "function",
+							"title": "Function"
+						},
+						{
+							"type": "script",
+							"title": "Script"
+						}
+					]
+				}
+			},
+			"input": {
+				"type": "list"
+			},
+			"desc": "Fields to update"
+		}
+	}
+}

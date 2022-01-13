@@ -1,0 +1,81 @@
+.io-manager-window {
+	width: 400px;
+	height: auto;
+	float: left;
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+	z-index: 1040;
+	border: 1px solid #888;
+}
+
+.io-manager-window-header {
+	width: 100%;
+	height: 2rem;
+	clear: both;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #888;
+	background-color: #4d505b;
+	color: #fff;
+	opacity: 0.9;
+}
+
+.io-manager-window-header > div > i {
+	padding: 5px 2px 0 2px;
+}
+
+.io-manager-window-header button {
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 1rem;
+	border: 1px solid #888;
+	padding: 0;
+	margin: 0 2px 0 2px;
+}
+
+.io-manager-window-container {
+	width: 100%;
+	height: 12rem;
+	background-color: #eee;
+	opacity: 0.9;
+	overflow: hidden;
+}
+
+.io-manager-window-container-row {
+	width: 100%;
+	height: 2rem;
+	clear: both;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+}
+
+.io-manager-window-container-row > div {
+	flex: 1;
+	overflow: hidden;
+	text-align: center;
+}
+
+.io-manager-window-container-row-error {
+	color: #d66;
+	cursor: pointer;
+}
+
+.io-manager-window-container-row button {
+	width: 1.2rem;
+	height: 1.2rem;
+	font-size: 0.75rem;
+	border: 1px solid #888;
+	padding: 0;
+	margin: 0 0 0 2px;
+	cursor: pointer;
+}
+
+.io-manager-window-footer {
+	width: 100%;
+	height: 2rem;
+	border-top: 1px solid #888;
+}

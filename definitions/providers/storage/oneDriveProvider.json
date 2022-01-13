@@ -1,0 +1,53 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "oneDriveProvider",
+	"vendor": "microsoft",
+	"category": "storage",
+	"title": "Microsoft One Drive API Provider",
+	"desc": "Microsoft One Drive API Provider",
+	"icon": "svg:one-drive",
+	"refs": {
+		"credentials": {
+			"type": "credential",
+			"filters": {
+				"vendor": "microsoft"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"credential": {
+			"index": 1,
+			"title": "Credential",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "id",
+						"title": "${username}@onedrive"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the service"
+		},
+		"root": {
+			"index": 2,
+			"title": "Root path",
+			"type": "string",
+			"required": true,
+			"desc": "Root document ID"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: ref('credentials', fields.credential).fields.username + '@onedrive'"}
+	}
+}

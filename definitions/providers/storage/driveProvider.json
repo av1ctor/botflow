@@ -1,0 +1,60 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "driveProvider",
+	"vendor": "google",
+	"category": "storage",
+	"title": "Google Drive",
+	"desc": "Google Drive Provider",
+	"icon": "svg:drive",
+	"refs": {
+		"credentials": {
+			"type": "credential",
+			"filters": {
+				"vendor": "google"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"credential": {
+			"index": 1,
+			"title": "Credential",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "id",
+						"title": "${username}@drive"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the service"
+		},
+		"basePath": {
+			"index": 2,
+			"title": "Base path",
+			"type": "string",
+			"required": true,
+			"desc": "Base path to use (folder's name inside Google Drive)"
+		},
+		"root": {
+			"index": 3,
+			"title": "Root path",
+			"type": "string",
+			"hidden": true,
+			"desc": "Root document ID"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: lookup('credentials', fields.credential).username + '@drive'"}
+	}
+}

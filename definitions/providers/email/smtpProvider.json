@@ -1,0 +1,106 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "smtpProvider",
+	"vendor": "internal",
+	"category": "email",
+	"title": "SMTP Provider",
+	"desc": "SMTP Provider",
+	"icon": "email",
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"url": {
+			"index": 1,
+			"title": "Server's URL",
+			"type": "string",
+			"required": true,
+			"input": "url",
+			"validate": {
+				"type": "url",
+				"err": "Invalid URL"
+			},
+			"desc": "URL of the SMTP server"
+		},
+		"port": {
+			"index": 2,
+			"title": "Server's port number",
+			"type": "number",
+			"required": true,
+			"validate": [
+				{
+					"type": "min",
+					"value": 1, 
+					"err": "Port number must be >= 1"
+				},
+				{
+					"type": "max",
+					"value": 65535, 
+					"err": "Port number must be <= 64k"
+				}
+			],
+			"desc": "Port number of the SMTP server"
+		},
+		"username": {
+			"index": 3,
+			"title": "Username",
+			"type": "string",
+			"required": true,
+			"validate": [
+				{
+					"type": "min",
+					"value": 3, 
+					"err": "Username length must be at least 3 chars long"
+				},
+				{
+					"type": "max",
+					"value": 64, 
+					"err": "Username length must be at most 64 chars long"
+				}
+			],
+			"desc": "User's name"
+		},
+		"password": {
+			"index": 4,
+			"title": "Password",
+			"type": "string",
+			"input": "password",
+			"required": true,
+			"validate": [
+				{
+					"type": "min",
+					"value": 8, 
+					"err": "Password length must be at least 8 chars long"
+				},
+				{
+					"type": "max",
+					"value": 32, 
+					"err": "Password length must be at most 32 chars long"
+				},
+				{
+					"type": "uppercase",
+					"min": 1, 
+					"err": "Password must have at least 1 uppercase character"
+				},
+				{
+					"type": "special",
+					"min": 1, 
+					"err": "Password must have at least 1 special character"
+				},
+				{
+					"type": "numeric",
+					"min": 1, 
+					"err": "Password must have at least 1 numeric character"
+				}
+			],
+			"desc": "User's password"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: fields.username + ':***@' + fields.url + ':' + fields.port"}
+	}
+}

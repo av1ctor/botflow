@@ -1,0 +1,56 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "genericApiProvider",
+	"vendor": "internal",
+	"category": "api",
+	"title": "Generic API Provider",
+	"desc": "Generic API Provider",
+	"icon": "plug",
+	"refs": {
+		"credentials": {
+			"type": "credential"
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "API identification",
+			"required": true
+		},
+		"desc": {
+			"index": 1,
+			"title": "Description",
+			"type": "string",
+			"desc": "API description"
+		},
+		"credential": {
+			"index": 2,
+			"title": "Credential",
+			"type": "string",
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "id",
+						"title": "name"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the API"
+		},
+		"baseUrl": {
+			"index": 3,
+			"title": "Base URL",
+			"type": "string",
+			"required": true,
+			"desc": "API base URL"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name"}
+	}
+}

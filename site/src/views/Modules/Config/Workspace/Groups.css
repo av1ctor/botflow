@@ -1,0 +1,65 @@
+
+.rf-group-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.rf-group-btn .la.la-bars {
+    cursor: grab;
+}
+
+.rf-group-name:hover {
+    cursor: pointer;
+}
+
+.rf-group-name {
+    clear: both;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.rf-group-name .rf-group-btn {
+    font-size: inherit;
+}
+
+.rf-group-name-value {
+    text-align: center;
+    max-width: 8rem;
+}
+
+.rf-group-node {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in-out;
+}
+
+.rf-group-node:hover {
+    transform: scale(1.1,1.1);
+    background-color: #ddf;
+}
+
+.rf-group-buttons {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 0;
+	margin: 0;
+}
+
+.rf-group-buttons > button {
+	opacity: 0.8;
+	margin-right: 8px;
+}
+
+.rf-group-buttons > button:hover {
+	opacity: 1;
+}
+
+.rf-group-input {
+    max-width: 8rem;
+}

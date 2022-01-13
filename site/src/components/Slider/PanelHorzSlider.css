@@ -1,0 +1,49 @@
+.panel-horz-slider {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.panel-horz-slider-container {
+	overflow: hidden;
+}
+
+.panel-horz-slider-content {
+    position: relative;
+    overflow: hidden;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.caret {
+	width: 20px;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0;
+	margin: 0;
+	background: #fff;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	text-align: center;
+	opacity: 0.75;
+}
+
+.caret:hover {
+	opacity: 1;
+}
+
+.caret-right {
+	right: 0;
+	box-shadow: -1px 0px 2px 0px #aaa;
+}
+.caret-left {
+	left: 0;
+	box-shadow: 1px 0px 2px 0px #aaa;
+}
+
+.panel-horz-slider-content .nav.nav-tabs {
+	flex-wrap: nowrap !important;
+}

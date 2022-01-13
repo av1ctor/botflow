@@ -1,0 +1,113 @@
+.row-2px {
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
+.row-2px-col {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.ribbon {
+    display: flex;
+    justify-content: center;
+}
+
+.ribbon,
+.mobile-ribbon {
+    margin-bottom: 4px;
+    border-radius: 4px;
+}
+
+.ribbon-col {
+    background-color: #eee;
+    min-width: min-content;
+}
+
+.ribbon-col:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.ribbon-group {
+    height: 100%;
+    padding-bottom: 24px;
+    min-width: max-content;
+}
+
+.ribbon-group-content {
+    height: 100%;
+    padding: 4px;
+}
+
+.ribbon-group-title {
+    padding: 6px 4px 4px 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background-color: #ddd;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.ribbon-group-title > div {
+    margin-top: -4px;
+}
+
+.ribbon-col:not(:last-child) .ribbon-group-title {
+    border-right: 1px solid #fff;
+}
+
+.ribbon-item.padding {
+    padding-bottom: 2px;
+}
+
+.mobile-ribbon-item {
+    display: none;
+}
+
+.mobile-ribbon-item.active {
+    display: block;
+}
+
+.ribbon-button {
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: transform .1s;
+}
+
+.ribbon-button:hover {
+    transform: scale(1.05);
+}
+
+.ribbon-button-title {
+    font-size: 0.75rem;
+    font-variant: normal;
+}
+
+.ribbon-button-icon {
+    line-height: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mobile-ribbon-toggle {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 1rem;
+}
+
+.mobile-ribbon-toggle > i:hover {
+    cursor: pointer;
+}
+
+.mobile-ribbon-container.closed {
+    border-top: 1px solid #ddd;
+}

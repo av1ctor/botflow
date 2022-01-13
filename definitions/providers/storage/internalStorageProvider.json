@@ -1,0 +1,34 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "internalStorageProvider",
+	"vendor": "internal",
+	"category": "storage",
+	"title": "Internal storage",
+	"desc": "Internal storage provider",
+	"icon": "file",
+	"hidden": true,
+	"fields": {
+		"basePath": {
+			"index": 0,
+			"title": "Base path",
+			"type": "string",
+			"hidden": true,
+			"desc": "Base path (can be relative)"
+		},
+		"baseUrl": {
+			"index": 1,
+			"title": "Base URL",
+			"type": "string",
+			"hidden": true,
+			"desc": "Base URL"
+		},
+		"root": {
+			"index": 2,
+			"title": "Root path",
+			"type": "string",
+			"hidden": true,
+			"desc": "Root document ID"
+		}
+	}
+}

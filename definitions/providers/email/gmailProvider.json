@@ -1,0 +1,46 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "gmailProvider",
+	"vendor": "google",
+	"category": "email",
+	"title": "Gmail",
+	"desc": "Gmail Provider",
+	"icon": "svg:gmail",
+	"refs": {
+		"credentials": {
+			"type": "credential",
+			"filters": {
+				"vendor": "google"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"credential": {
+			"index": 1,
+			"title": "Credential",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "id",
+						"title": "${username}@gmail.com"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the service"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: lookup('credentials', fields.credential).username + '@gmail.com'"}
+	}
+}

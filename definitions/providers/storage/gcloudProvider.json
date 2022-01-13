@@ -1,0 +1,67 @@
+{
+	"version": 1.0,
+	"type": "provider",
+	"name": "gcloudStorageProvider",
+	"vendor": "google",
+	"category": "storage",
+	"title": "Google Cloud Storage API Provider",
+	"desc": "Google Cloud Storage API Provider",
+	"icon": "svg:gcloud",
+	"refs": {
+		"credentials": {
+			"type": "credential",
+			"filters": {
+				"vendor": "google"
+			}
+		}
+	},
+	"fields": {
+		"name": {
+			"index": 0,
+			"title": "Name",
+			"type": "string",
+			"desc": "Server identification"
+		},
+		"credential": {
+			"index": 1,
+			"title": "Credential",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "credentials.fields",
+					"option": {
+						"value": "option.id",
+						"title": "option.username + '@gcloud'"
+					}
+				}
+			},
+			"desc": "Credential to use when acessing the service"
+		},
+		"root": {
+			"index": 2,
+			"title": "Root path",
+			"type": "string",
+			"required": true,
+			"desc": "Root document ID"
+		},
+		"corsOrigin": {
+			"index": 3,
+			"title": "Origin",
+			"type": "string",
+			"required": true,
+			"desc": "Allowed origins to use with CORS"
+		},
+		"location": {
+			"index": 4,
+			"title": "Location",
+			"type": "string",
+			"required": true,
+			"desc": "Cloud location"
+		}
+	},
+	"methods": {
+		"toString": {"script": "fields.name? fields.name: lookup('credentials', fields.credential).username + '@gcloud'"}
+	}
+}

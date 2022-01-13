@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robotikflow - OAuth 2 Redirect Page</title>
+    <script>
+        function sendMessage(data)
+        {
+          window.opener.postMessage(data, '*');
+        }
+
+        async function saveCode()
+        {
+            const {apiBasePath, authToken, id} = JSON.parse(decodeURI(window.name));
+
+            const options = {
+              headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + authToken
+                      },
+              mode: 'cors',
+              cache: 'no-store',
+              method: 'PATCH'
+            };
+
+            const res = await fetch(
+              `${apiBasePath}config/credentials/${id}/oauth2/redeem${window.location.search || ''}`, options
+            );
+
+            const body = await res.json();
+            if(res.ok)
+            {
+              sendMessage({sender: 'ROBOTIKFLOW', errors: null, data: body});
+            }
+            else
+            {
+              sendMessage({sender: 'ROBOTIKFLOW', errors: body.errors, data: null});
+            }
+
+            window.close();
+        }
+
+        window.addEventListener('load', () => saveCode());
+    </script>    
+  </head>
+  <body>
+  </body>
+</html>

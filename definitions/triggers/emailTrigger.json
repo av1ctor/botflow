@@ -1,0 +1,105 @@
+{
+	"version": 1.0,
+	"type": "trigger",
+	"name": "emailTrigger",
+	"category": "email",
+	"title": "E-mail monitor",
+	"desc": "Monitors a e-mail provider",
+	"icon": "envelope",
+	"refs": {
+		"providers": {
+			"type": "provider",
+			"filters": {
+				"category": "email"
+			}
+		}
+	},
+	"fields": {
+		"provider": {
+			"index": 0,
+			"title": "Provider",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "providers.fields",
+					"option": {
+						"value": "id",
+						"title": "title"
+					}
+				}
+			},
+			"desc": "E-mail provider to monitor"
+		},
+		"conditions": {
+			"index": 1,
+			"title": "Conditions",
+			"type": "logtree",
+			"required": true,
+			"fields": {
+				"field": {
+					"index": 0,
+					"title": "Field", 
+					"type": "string",
+					"required": true,
+					"input": {
+						"type": "select",
+						"options": [
+							{"value": "SENDER", "title": "From"},
+							{"value": "SUBJECT", "title": "Subject"},
+							{"value": "BODY", "title": "Body"}
+						]
+					},
+					"width": 6,
+					"desc": "E-mail field to verify"
+				},
+				"value": {
+					"index": 1,
+					"title": "Value", 
+					"type": "string",
+					"required": true,
+					"width": 6,
+					"desc": "Value to check (Regular Expression)"
+				}
+			},
+			"input": {
+				"type": "logtree"
+			},
+			"desc": "Conditions"
+		},
+		"makeCopy": {
+			"index": 2,
+			"title": "Store a copy?",
+			"type": "bool",
+			"desc": "Store a copy of the e-mail"
+		}
+	},
+	"operations":
+	{
+		"sync": {
+			"out": {
+				"multiple": true,
+				"fields": {
+					"sender": {
+						"type": "string",
+						"title": "Sender"
+					},
+					"subject": {
+						"type": "string",
+						"title": "Subject"
+					},
+					"body": {
+						"type": "string",
+						"title": "Body"
+					},
+					"files": {
+						"type": "array",
+						"title": "Files",
+						"hidden": true
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,91 @@
+{
+	"version": 1.0,
+	"type": "activity",
+	"name": "sendEmailActivity",
+	"category": "email",
+	"dir": "out",
+	"title": "Send e-mail",
+	"desc": "Sends an e-mail using a configured provider",
+	"icon": "envelope",
+	"refs": {
+		"providers": {
+			"type": "provider",
+			"filters": {
+				"category": "email"
+			}
+		}
+	},
+	"fields": {
+		"provider": {
+			"index": 0,
+			"title": "Provider",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "select",
+				"source": {
+					"name": "providers.fields",
+					"option": {
+						"value": "id",
+						"title": "title"
+					}
+				}
+			},
+			"desc": "Name of the configured e-mail provider"
+		},
+		"from": {
+			"index": 1,
+			"title": "From",
+			"type": "string",
+			"placeholder": "from@me.com",
+			"input": {
+				"type": "email",
+				"validate": [
+					{
+						"type": "email",
+						"err": "Senders e-mail address is invalid"
+					}
+				]
+			},
+			"desc": "Address of the sender"
+		},
+		"to": {
+			"index": 2,
+			"title": "To",
+			"type": "string",
+			"required": true,
+			"placeholder": "to@them.com",
+			"input": {
+				"type": "email",
+				"validate": [
+					{
+						"type": "email",
+						"err": "Receivers e-mail address is invalid"
+					}
+				]
+			},
+			"desc": "Address of the receiver"
+		},
+		"subject": {
+			"index": 3,
+			"title": "Subject",
+			"type": "string",
+			"required": true,
+			"input": {
+				"type": "text"
+			},
+			"desc": "Subject of the e-email"
+		},
+		"body": {
+			"index": 4,
+			"title": "Body",
+			"type": "string",
+			"input": {
+				"type": "textarea",
+				"title": "Text",
+				"rows": 5
+			},
+			"desc": "Body of the e-mail"
+		}
+	}
+}

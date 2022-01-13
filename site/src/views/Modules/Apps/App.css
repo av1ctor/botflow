@@ -1,0 +1,28 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rf-app-container {
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    padding: 2rem;
+    width: 100vw;
+    min-height: calc(100vh - 16px);
+    background-color: #fff;
+}
+
+@media only screen and (min-width: 1024px) {
+    .rf-app-container {
+        margin: 1rem auto;
+        width: 80vw;
+        max-width: 1024px;
+        min-height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}

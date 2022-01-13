@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-dnd-html5-backend/lib/cjs/NativeDragSources/nativeTypesConfig.js b/node_modules/react-dnd-html5-backend/lib/cjs/NativeDragSources/nativeTypesConfig.js
+index e14c83f..8203f93 100644
+--- a/node_modules/react-dnd-html5-backend/lib/cjs/NativeDragSources/nativeTypesConfig.js
++++ b/node_modules/react-dnd-html5-backend/lib/cjs/NativeDragSources/nativeTypesConfig.js
+@@ -7,7 +7,7 @@ exports.nativeTypesConfig = (_a = {},
+     _a[NativeTypes.FILE] = {
+         exposeProperties: {
+             files: function (dataTransfer) {
+-                return Array.prototype.slice.call(dataTransfer.files);
++                return dataTransfer.getFilesAndDirectories? dataTransfer: Array.prototype.slice.call(dataTransfer.items? dataTransfer.items: dataTransfer.files);
+             },
+             items: function (dataTransfer) { return dataTransfer.items; },
+         },
+diff --git a/node_modules/react-dnd-html5-backend/lib/esm/NativeDragSources/nativeTypesConfig.js b/node_modules/react-dnd-html5-backend/lib/esm/NativeDragSources/nativeTypesConfig.js
+index ffdb5c6..0fc744d 100644
+--- a/node_modules/react-dnd-html5-backend/lib/esm/NativeDragSources/nativeTypesConfig.js
++++ b/node_modules/react-dnd-html5-backend/lib/esm/NativeDragSources/nativeTypesConfig.js
+@@ -3,7 +3,7 @@ import { getDataFromDataTransfer } from './getDataFromDataTransfer';
+ export const nativeTypesConfig = {
+     [NativeTypes.FILE]: {
+         exposeProperties: {
+-            files: (dataTransfer) => Array.prototype.slice.call(dataTransfer.files),
++            files: (dataTransfer) => dataTransfer.getFilesAndDirectories? dataTransfer: Array.prototype.slice.call(dataTransfer.items? dataTransfer.items: dataTransfer.files),
+             items: (dataTransfer) => dataTransfer.items,
+         },
+         matchesTypes: ['Files'],

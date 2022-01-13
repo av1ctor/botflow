@@ -1,0 +1,220 @@
+package com.robotikflow.core.services.formula.parser;
+
+import com.robotikflow.core.services.formula.eval.*;
+
+class Parser;
+   
+parser code {:
+:};
+
+terminal LBRACK, RBRACK; // array_type
+terminal DOT; // qualified_name
+terminal SEMICOLON, MULT, COMMA, LBRACE, RBRACE, EQ, LPAREN, RPAREN, COLON;
+terminal PLUS, MINUS, NOT, DIV, MOD, POW;
+terminal LSHIFT, RSHIFT; // shift_expr
+terminal LT, GT, LTEQ, GTEQ; // relational_expr
+terminal EQEQ, NOTEQ; // equality_expr
+terminal AND; // and_expr
+terminal OR;  // inclusive_or_expr
+terminal ANDAND; // conditional_and_expr
+terminal OROR; // conditional_or_expr
+terminal QUESTION; // conditional_expr
+
+terminal java.lang.Number INTEGER_LIT;
+terminal java.lang.Number FLOATING_POINT_LIT;
+terminal java.lang.Boolean BOOLEAN_LIT;
+terminal java.lang.String STRING_LIT;
+terminal java.lang.String IDENTIFIER; // name
+terminal NULL_LIT;
+
+non terminal AstBase name, simple_name, qualified_name;
+non terminal AstBase literal;
+non terminal AstBase primary, primary_field_access, method_invocation, array_access;
+non terminal AstBase argument_list_opt, argument_list;
+non terminal AstBase postfix_expr, unary_expr, unary_expr_not_plus_minus;
+non terminal AstBase pow_expr, multiplicative_expr, additive_expr, shift_expr;
+non terminal AstBase relational_expr, equality_expr, and_expr;
+non terminal AstBase inclusive_or_expr, conditional_and_expr, conditional_or_expr, conditional_expr;
+non terminal AstBase expression;
+
+
+start with expression;
+
+name ::=	
+        simple_name:s
+        {: RESULT = s; :}
+	|	qualified_name:q
+        {: RESULT = q; :}
+	;
+simple_name ::=	
+        IDENTIFIER:i
+        {: RESULT = new AstVariable(i); :}
+	;
+qualified_name ::=
+		name:n DOT IDENTIFIER:i
+        {: RESULT = new AstField(n, i); :}
+	;
+
+literal ::=	
+        INTEGER_LIT:i
+        {: RESULT = new AstIntegerLit(i); :}
+	|	FLOATING_POINT_LIT:f
+        {: RESULT = new AstDecimalLit(f); :}
+	|	BOOLEAN_LIT:b
+        {: RESULT = new AstBooleanLit(b); :}
+	|	STRING_LIT:s
+        {: RESULT = new AstStringLit(s); :}
+	|	NULL_LIT
+        {: RESULT = new AstNullLit(); :}
+	;
+
+primary ::=
+		literal:l
+        {: RESULT = l; :}
+	|	LPAREN expression:e RPAREN
+        {: RESULT = e; :}
+	|	method_invocation:m
+        {: RESULT = m; :}
+	|	primary_field_access:f
+        {: RESULT = f; :}
+	|	array_access:a
+        {: RESULT = a; :}
+	;
+argument_list_opt ::=
+    |   /* empty */
+        argument_list:l
+        {: RESULT = l; :}
+    ;
+argument_list ::=
+		expression:e
+        {: RESULT = new AstArg(e);  :}
+	|	argument_list:l COMMA expression:e
+        {: RESULT = new AstArg((AstArg)l, e); :}
+    |	argument_list:l SEMICOLON expression:e
+        {: RESULT = new AstArg((AstArg)l, e); :}
+	;
+method_invocation ::=
+	 	name:n DOT IDENTIFIER:i LPAREN argument_list_opt:l RPAREN
+        {: RESULT = new AstFunction(n, i, (AstArg)l); :}
+	|	primary:p DOT IDENTIFIER:i LPAREN argument_list_opt:l RPAREN
+        {: RESULT = new AstFunction(p, i, (AstArg)l); :}
+	;
+primary_field_access ::=
+		primary:p DOT IDENTIFIER:i
+        {: RESULT = new AstField(p, i); :}
+	;
+array_access ::=
+		name:n LBRACK expression:e RBRACK
+        {: RESULT = new AstIndexing(e, n); :}
+	|	primary:p LBRACK expression:e RBRACK
+        {: RESULT = new AstIndexing(e, p); :}
+	;
+postfix_expr ::=
+		primary:p
+        {: RESULT = p; :}
+	|	name:n
+        {: RESULT = n; :}
+	;
+unary_expr ::=
+	    PLUS unary_expr:l
+        {: RESULT = new AstUop(Operator.ADD, l); :}
+	|	MINUS unary_expr:l
+        {: RESULT = new AstUop(Operator.SUB, l); :}
+	|	unary_expr_not_plus_minus:e
+        {: RESULT = e; :}
+	;
+unary_expr_not_plus_minus ::=
+		postfix_expr:e
+        {: RESULT = e; :}
+	|	NOT unary_expr:l
+        {: RESULT = new AstUop(Operator.NOT, l); :}
+	;
+pow_expr ::=
+		unary_expr:e
+        {: RESULT = e; :}
+	|	pow_expr:l POW unary_expr:r
+        {: RESULT = new AstMultOp(Operator.POW, l, r); :}
+	;
+multiplicative_expr ::=
+		pow_expr:e
+        {: RESULT = e; :}
+	|	multiplicative_expr:l MULT pow_expr:r
+        {: RESULT = new AstMultOp(Operator.MULT, l, r); :}
+	|	multiplicative_expr:l DIV pow_expr:r
+        {: RESULT = new AstMultOp(Operator.DIV, l, r); :}
+	|	multiplicative_expr:l MOD pow_expr:r
+        {: RESULT = new AstMultOp(Operator.MOD, l, r); :}
+	;
+additive_expr ::=
+		multiplicative_expr:e
+        {: RESULT = e; :}
+	|	additive_expr:l PLUS multiplicative_expr:r
+        {: RESULT = new AstAddOp(Operator.ADD, l, r); :}
+	|	additive_expr:l MINUS multiplicative_expr:r
+        {: RESULT = new AstAddOp(Operator.SUB, l, r); :}
+	;
+shift_expr ::=
+		additive_expr:e
+        {: RESULT = e; :}
+	|	shift_expr:l LSHIFT additive_expr:r
+        {: RESULT = new AstMultOp(Operator.SHL, l, r); :}
+	|	shift_expr:l RSHIFT additive_expr:r
+        {: RESULT = new AstMultOp(Operator.SHR, l, r); :}
+	;
+relational_expr ::=
+		shift_expr:e
+        {: RESULT = e; :}
+	|	relational_expr:l LT shift_expr:r
+        {: RESULT = new AstRelatOp(Operator.LT, l, r); :}
+	|	relational_expr:l GT shift_expr:r
+        {: RESULT = new AstRelatOp(Operator.GT, l, r); :}
+	|	relational_expr:l LTEQ shift_expr:r
+        {: RESULT = new AstRelatOp(Operator.LE, l, r); :}
+	|	relational_expr:l GTEQ shift_expr:r
+        {: RESULT = new AstRelatOp(Operator.GE, l, r); :}
+	;
+equality_expr ::=
+		relational_expr:e
+        {: RESULT = e; :}
+	|	equality_expr:l EQ relational_expr:r
+        {: RESULT = new AstRelatOp(Operator.EQ, l, r); :}
+	|	equality_expr:l EQEQ relational_expr:r
+        {: RESULT = new AstRelatOp(Operator.EQ, l, r); :}
+	|	equality_expr:l NOTEQ relational_expr:r
+        {: RESULT = new AstRelatOp(Operator.NE, l, r); :}
+	;
+and_expr ::=
+		equality_expr:e
+        {: RESULT = e; :}
+	|	and_expr:l AND equality_expr:r
+        {: RESULT = new AstAddOp(Operator.AND, l, r); :}
+	;
+inclusive_or_expr ::=
+		and_expr:e
+        {: RESULT = e; :}
+	|	inclusive_or_expr:l OR and_expr:r
+        {: RESULT = new AstAddOp(Operator.OR, l, r); :}
+	;
+conditional_and_expr ::=
+		inclusive_or_expr:e
+        {: RESULT = e; :}
+	|	conditional_and_expr:l ANDAND inclusive_or_expr:r
+        {: RESULT = new AstCondOp(Operator.LAND, l, r); :}
+	;
+conditional_or_expr ::=
+		conditional_and_expr:e
+        {: RESULT = e; :}
+	|	conditional_or_expr:l OROR conditional_and_expr:r
+        {: RESULT = new AstCondOp(Operator.LOR, l, r); :}
+	;
+conditional_expr ::=
+		conditional_or_expr:e
+        {: RESULT = e; :}
+	|	conditional_or_expr:e QUESTION expression:t COLON conditional_expr:f
+        {: RESULT = new AstConditional(e, t, f); :}
+	;
+
+expression ::=
+        conditional_expr:e
+        {: RESULT = new AstExpression(e); :}
+    ;

@@ -1,0 +1,30 @@
+.rf-screen-text {
+    display: flex;
+    height: 100%;
+    min-height: 1rem;
+    flex-direction: column;
+}
+
+.rf-screen-text div {
+    width: 100%;
+    height: fit-content;
+    min-height: 1rem;
+}
+
+.rf-screen-block {
+    align-items: center;
+    min-height: 1rem;
+}
+
+.rf-screen-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rf-screen-form form {
+    width: 100%;
+    height: fit-content;
+}
+
